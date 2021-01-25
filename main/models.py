@@ -9,7 +9,7 @@ class ToDo(models.Model):
 
 
 class Book(models.Model):
-    tiitle = models.CharField(max_length=50)
+    title = models.CharField(max_length=50)
     subtitle = models.CharField(max_length=50)
     description = models.TextField()
     price = models.IntegerField()

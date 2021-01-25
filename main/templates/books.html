@@ -1,29 +1,33 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
     <head>
         <meta crarset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Document</title>
-        
+       
     </head>
     <body>
-        <form method="POST">
-            <h>Добавить книгу</h>
+        <form action="{% url 'add-book' %}" method="POST">
+
+            {% csrf_token %}
+            <h>Добавить книгу</h><br><br>
             <input type="text" name="title" placeholder="Зоголовок"><br><br>
             <input type="text" name="subtitle" placeholder="Подзоголовок"><br><br>
             <input type="text" name="description" placeholder="Описание"><br><br>
-            <input type="number" name="price" placeholder="Цена"><br><br>
+            <input type="integer" name="price" placeholder="Цена"><br><br>
             <input type="text" name="genre" placeholder="Жанр"><br><br>
             <input type="text" name="author" placeholder="Автор"><br><br>
-            <input type="datetime-local" name="year" placeholder="год"><br><br>
+            <input type="datetime-local" name="date" placeholder="год"><br><br>
             <button>Добавить</button>
         </form>
-
+        <hr>
         {% for book in books %}
             <div>
                 <h3>{{ book.title }} - {{ book.author }}</h3>
                 <h4>{{ book.price }}</h4>
             </div>
+            <hr>
         {% endfor %} 
     </body>
 </html> 
